@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+
+  }
+
+  .table {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 12px;
+  }
+
+.form-group{
+    align-items: center;
+    align-content: center;
+}
+.form-control-sx{
+    width: 70%;
+    display:inline;
+}
+
+.card-title {
+  float: left;
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin: 0;
+}
