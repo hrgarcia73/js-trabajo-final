@@ -1,4 +1,4 @@
-import {pages} from '../controllers/index.js'
+import {pages} from '../views/index.js'
 
 let content = document.getElementById("root");
 
@@ -6,7 +6,7 @@ export const router = async (route) => {
     content.innerHTML = "";
     switch (route){
         case '#/':{
-            return content.appendChild(pages.home());
+            return content.appendChild(await pages.home());
         }
         case '#/products':
             return console.log('products') //content.appendChild(pages.products());

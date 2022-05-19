@@ -1,17 +1,16 @@
-import view from '../views/home.html'
-import {getFermentadores} from "../data/getData.js"
+export const getFermentadores = async () => {
+    try {
+        const response = await fetch("https://novaware.com.ar/fermentadores.json");
+        const data = await response.json();
+        //console.log(data);
+        return data;
+        
+    } catch (error) {
+        console.log('Error: ', error);
+    }
+}
 
-const fermentadores = getFermentadores();
-
-export default () => {
-    const divElement = document.createElement('div');
-    divElement.innerHTML = view;
-    
-    const cbx = divElement.querySelector('#select-ferm');
-    cbx.innerHTML="<option></option>";
-    fermentadores.forEach(fermentador => {
-        cbx.innerHTML+= `<option>${fermentador.nombre}</option>`;
-    })
-
-    return divElement;
+export const selectFermentador = (e) => {
+    e.preventDefault();
+    alert ('fermentador');
 }
