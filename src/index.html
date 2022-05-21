@@ -5,20 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!--Toastify-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    
     <title>Registro de fermentadores</title>
 </head>
 <body>
     <header class="p-3 bg-dark text-white d-flex flex-wrap justify-content-center">
-        <span class="fs-4">REGISTROS DE FERMENTACION</span>
+        <a href="/">
+            <span class="fs-4">REGISTROS DE FERMENTACION</span>
+        </a>
     </header>
 
-    <!--SELECCION DE FERMENTADORES-->
-    <section class="content mt-2" id="select"></section>
+    <div id="root">
 
+    </div>
+    <!--
+        Esto lo pongo acá porque sino no puedo acceder a la imagen de los tanques. De esta manera la imagen se copia al dist y 
+        puedo referenciarla
+    -->
+    <div class="invisible">
+        <img src="../src/img/cilindroconico.jpg" alt="">
+    </div>
 
-      <div class="container">
-        <section id="root"></section>
-      </div>
-      
+    <!--Toastify-->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+    <!--Sweetalert-->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

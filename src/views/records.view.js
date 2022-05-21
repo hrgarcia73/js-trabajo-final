@@ -1,29 +1,28 @@
+import {deleteRecord, getFmRecords, editRecord} from '../controllers/records.controller';
+import fmName from '../utils/fmName';
 
-import view from '../views/registros.html';
+export default async (route) => {
+    let records = await getFmRecords(fmName(route));
+    const view = document.createElement('div');
+    view.classList.add('container-fluid');
+    view.innerHTML =   `<div class="row">
+                            <div class="col-md-12">
+                                <div class="card primary-cad">
+                                    <div class="card-header">
+                                        <h3 class="card-title"> Registros del fermentador <span id="fm-name">FM12</span></h3>
+                                        <a href="#nuevoregistro">
+                                            <button type="button" class="btn btn-info btn-xs" id="btn-cargar-registros">Nuevo registro</button>
+                                        </a>
+                                    </div>
 
+                                    <table class="table-sm table-striped" id="tabla-registros-fermentador"></table>
+                                </div>
+                            </div>
+                        </div>`
+    const nombreFerm = view.querySelector('#fm-name');
+    nombreFerm.innerHTML = fmName(route);
 
-
-const fermentadores = getFermentadores();
-
-export default () => {
-    const divElement = document.createElement('div');
-    divElement.innerHTML = view;
-
-    return divElement;
-}
-
-
-
-
-
-
-
-
-
-
-function renderRegistros(){
-    
-    let tablaRegistros = document.getElementById("tabla-registros-fermentador");
+    let tablaRegistros = view.querySelector("#tabla-registros-fermentador");
     tablaRegistros.innerHTML = "";
 
     let thead = tablaRegistros.appendChild(document.createElement('thead'));
@@ -60,7 +59,7 @@ function renderRegistros(){
         de registros para mostrar. Sino, muestra el footer de la tabla informando que no
         hay registros
     */
-    registrosFermentador.length>=1 ? registrosFermentador.forEach(registro => {
+    records.length>=1 ? records.forEach(registro => {
         /*
             Cambio el método para pintar las filas para poder crear los botones 
             como objetos del <td> y este como objeto del <tr> como lo hace Juan
@@ -92,17 +91,21 @@ function renderRegistros(){
             btnEditar.innerText = "Editar";
             btnEditar.classList.add("btn", "btn-info","btn-sm", "mr-1");
             btnEditar.addEventListener("click", () => {
-                editarRegistro(registro);
+                editRecord(registro);
             })
 
             const btnBorrar = td.appendChild(document.createElement('button'));
             btnBorrar.innerText = "Borrar";
             btnBorrar.classList.add("btn", "btn-danger","btn-sm");
             btnBorrar.addEventListener("click", () => {
-                borrarRegistro(registro);
+                deleteRecord(registro);
             })
 
             tbody.appendChild(tr);
 
     }): tfoot.innerHTML = `<th scope="row" colspan="15">Sin registros para mostrar</th>`
+
+
+
+    return view;
 }

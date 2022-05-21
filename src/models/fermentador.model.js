@@ -5,3 +5,5 @@ export class fermentador {
         this.producto=producto;
     }
 }
+
+
